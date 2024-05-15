@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import SubTiltle from "../Uitily/SubTiltle";
 import CategoryCard from "./../Category/CategoryCard";
@@ -7,24 +7,10 @@ import cat2 from "../../images/cat2.png";
 import labtop from "../../images/labtop.png";
 import sale from "../../images/sale.png";
 import pic from "../../images/pic.png";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategory } from "../../redux/actions/categoryAction";
+import HomeCategoryHook from "../../hook/Category/HomeCategoryHook";
 
 const HomeCategory = () => {
-  const dispatch = useDispatch();
-  const category = useSelector((state) => state.allCategory.category);
-  const loading = useSelector((state) => state.allCategory.loading);
-  useEffect(() => {
-    dispatch(getAllCategory());
-  }, [dispatch]);
-  const colors = [
-    "#FFD3E8",
-    "#F4DBA5",
-    "#55CFDF",
-    "#FF6262",
-    "#0034FF",
-    "#FFD3E8",
-  ];
+  const { category, loading, colors } = HomeCategoryHook();
 
   return (
     <Container>
